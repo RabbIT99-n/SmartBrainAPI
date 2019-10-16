@@ -1,7 +1,7 @@
 const express=require('express');
 const bodyParser= require('body-parser');
 const bcrypt = require('bcrypt');
-const cors= require('cors');
+//const cors= require('cors');
 const knex= require ('knex');
 
 const register= require('./controlers/register');
@@ -19,12 +19,12 @@ const db = knex ({
 
 const app=express();
 
-app.use(cors());
+/*app.use(cors());
 //CORS problem ?
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
-});
+}); */
 app.use(bodyParser.json());
 
 
