@@ -18,13 +18,15 @@ const db = knex ({
 });
 
 const app=express();
-app.use(bodyParser.json());
+
 app.use(cors());
 //CORS problem ?
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });
+app.use(bodyParser.json());
+
 
 app.get('/', (req, res) => {
      res.send("It is working");
