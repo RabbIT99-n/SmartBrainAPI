@@ -12,24 +12,15 @@ const image=require('./controlers/image');
 const db = knex ({
     client: 'pg',
     connection: {
-      connectionString : process.env.DATABASE_URL,
-      ssl: true
+      host : '127.0.0.1',
+      user : 'postgres',
+      password : '0904',
+      database : 'smartbrain'
     }
 });
 
 const app=express();
 app.use(cors());
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", '*');
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-  next();
-}); // CORS error -not solved
-
-
-
 app.use(bodyParser.json());
 
 
@@ -47,8 +38,8 @@ app.put('/image', (req, res) => {image.handleImage(req,res,db)})
 
 app.post('/imageurl', (req, res) => {image.handleApiCall(req,res)})
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`App is running on port ${process.env.PORT}`);
+app.listen(3000, () => {
+    console.log(`App is running on port 3000`);
 })
 
 
